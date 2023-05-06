@@ -1,4 +1,4 @@
-Directory with R routines used in:
+Repository with R routines used in:
 **Spatio-temporal instrumental variables regression with missing data: A Bayesian approach**, Accepted at Computational Economics.  
 
 - **MCMC_Code_IVST.R** : Main file containing the MCMC routine; 
