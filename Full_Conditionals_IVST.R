@@ -134,4 +134,3 @@ atualizarRHO<-function(a,b,rho,W,endogena,instrumentos,delta,y,covariaveis,beta,
   RHOfinal      <- ifelse(runif(1)<chanceaceitar,exp(valorproposto)/(1+exp(valorproposto)),rho)
   return(RHOfinal)
 }
-
