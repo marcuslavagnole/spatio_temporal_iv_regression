@@ -3,7 +3,7 @@ In this repository, one can find the R routines used in the article
 
 The paper proposes an extension of the Bayesian instrumental variables regression, which allows spatial and temporal correlation among observations. For that, we introduce a double separable covariance matrix, adopting a Conditional Autoregressive structure for the spatial component and a first-order autoregressive process for the temporal component. We also introduce a Bayesian multiple imputation to handle missing data considering uncertainty. The methodology is applied for the estimation of how broadband affects the Gross Domestic Product of municipalities in the state of Mato Grosso do Sul from 2010 to 2017.
 
-## Structure
+This repo includes:
 
 - **MCMC_Code_IVST.R** : Main file containing the MCMC routine; 
 - **Full_Conditionals_IVST.R** : Auxiliary file with all full conditional distributions;
