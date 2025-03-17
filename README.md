@@ -1,5 +1,5 @@
 Repository with R routines used in:
-[[Spatio-temporal instrumental variables regression with missing data: A Bayesian approach]], Computational Economics, 62(1), 29-47, 2023. 
+[[Spatio-temporal instrumental variables regression with missing data: A Bayesian approach]](https://doi.org/10.1007/s10614-022-10269-z), Computational Economics, 62(1), 29-47, 2023. 
 
 **Authors**:
 
