@@ -1,5 +1,7 @@
 In this repository, one can find the R routines used in the article
-[Spatio-temporal instrumental variables regression with missing data: A Bayesian approach](https://doi.org/10.1007/s10614-022-10269-z). It is a joint work with [Kelly C. M. Gonçalves](https://sites.google.com/dme.ufrj.br/kelly/) and Mario Jorge Mendonça, published in Computational Economics. 
+[Spatio-temporal instrumental variables regression with missing data: A Bayesian approach](https://doi.org/10.1007/s10614-022-10269-z), coauthored by [Kelly C. M. Gonçalves](https://sites.google.com/dme.ufrj.br/kelly/) and Mario Jorge Mendonça and published in Computational Economics. 
+
+It is a joint work with [Kelly C. M. Gonçalves](https://sites.google.com/dme.ufrj.br/kelly/) and Mario Jorge Mendonça, published in Computational Economics. 
 
 The paper proposes an extension of the Bayesian instrumental variables regression, which allows spatial and temporal correlation among observations. For that, we introduce a double separable covariance matrix, adopting a Conditional Autoregressive structure for the spatial component and a first-order autoregressive process for the temporal component. We also introduce a Bayesian multiple imputation to handle missing data considering uncertainty. The inference procedure is described joint with a step-by-step Monte Carlo Markov Chain algorithm for parameter estimation. We illustrate our methodology through a simulation study and a real application that investigates how broadband affects the Gross Domestic Product of municipalities in the state of Mato Grosso do Sul from 2010 to 2017.
 
