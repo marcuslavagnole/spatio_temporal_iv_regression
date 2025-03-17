@@ -3,9 +3,9 @@ Repository with R routines used in:
 
 **Authors**:
 
-### Abstract
+## Abstract
 
-### Structure
+## Structure
 
 - **MCMC_Code_IVST.R** : Main file containing the MCMC routine; 
 - **Full_Conditionals_IVST.R** : Auxiliary file with all full conditional distributions;
