@@ -8,7 +8,6 @@ imputMISSING<-function(entries,y,covariaveis,beta,endogena,instrumentos,delta,si
   
   v           <- c(y,endogena)
   matrix.x    <- cbind(covariaveis,endogena)
-  #matrix.x    <- covariaveis
   mu          <- c(matrix.x%*%beta,instrumentos%*%delta)
   
   sigma_bar22_inv <- chol2inv(chol(sigma_bar22))
