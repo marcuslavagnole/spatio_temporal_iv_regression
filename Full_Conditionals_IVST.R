@@ -1,14 +1,11 @@
 # Full conditional distribution for sigma
 atualizarSIGMA<-function(a0,A0,endogena,instrumentos,delta,y,covariaveis,beta,omega,n,t,tau,rho,W){
   v1 <- y - cbind(covariaveis,endogena)%*%beta
-  #v1 <- y - covariaveis%*%beta
   v2 <- endogena - instrumentos%*%delta
   v  <- cbind(v1,v2)
   
   omega_inv <- chol2inv(chol(omega))
   tau_inv   <- (diag(rowSums(W)) - rho*W)
-  #omega_inv <- diag(1,t)
-  #tau_inv   <- diag(1,n)
     
   a1 <- a0 + n*t
   A1 <- A0 + t(v)%*%kronecker(tau_inv,omega_inv)%*%v
@@ -23,8 +20,6 @@ atualizarBETA<-function(b0,B0,sigma,endogena,instrumentos,delta,y,covariaveis,om
   
   omega_inv     <- chol2inv(chol(omega))
   tau_inv       <- (diag(rowSums(W)) - rho*W)
-  #omega_inv <- diag(1,t)
-  #tau_inv   <- diag(1,n)
   spat_temp     <- kronecker(tau,omega) 
   spat_temp_inv <- kronecker(tau_inv,omega_inv)
   
@@ -47,15 +42,12 @@ atualizarDELTA<-function(d0,D0,sigma,endogena,instrumentos,dados,covariaveis,bet
   
   omega_inv     <- chol2inv(chol(omega))
   tau_inv       <- (diag(rowSums(W)) - rho*W)
-  #omega_inv <- diag(1,t)
-  #tau_inv   <- diag(1,n)
   spat_temp     <- kronecker(tau,omega) 
   spat_temp_inv <- kronecker(tau_inv,omega_inv)
   
   sigma.xy    <- sigma22*spat_temp - (sigma21*spat_temp)%*%((1/sigma11)*spat_temp_inv)%*%(sigma12*spat_temp)
   sigma.xy_inv<- chol2inv(chol(sigma.xy))
   matrix.x    <- cbind(covariaveis,endogena)
-  #matrix.x    <- covariaveis
   v           <- endogena - (sigma21*spat_temp)%*%((1/sigma11)*spat_temp_inv)%*%(y-matrix.x%*%beta)
   
   D1      <- solve( solve(D0) + t(instrumentos)%*%sigma.xy_inv%*%instrumentos )
@@ -67,7 +59,6 @@ atualizarDELTA<-function(d0,D0,sigma,endogena,instrumentos,dados,covariaveis,bet
 # Full conditional for psi
 condicionalPSI<-function(a,b,psi,endogena,instrumentos,delta,y,covariaveis,beta,sigma,tau,rho,W,sigma2,n,t,p){
   v1 <- y - cbind(covariaveis,endogena)%*%beta
-  #v1 <- y - covariaveis%*%beta
   v2 <- endogena - instrumentos%*%delta
   v  <- c(v1,v2)
   
@@ -107,17 +98,14 @@ atualizarPHI<-function(a,b,phi,endogena,instrumentos,delta,y,covariaveis,beta,si
 # Full conditional for GAMMA
 condicionalGAMMA<-function(a,b,gama,W,endogena,instrumentos,delta,y,covariaveis,beta,sigma,t,p){
   v1 <- y - cbind(covariaveis,endogena)%*%beta
-  #v1 <- y - covariaveis%*%beta
   v2 <- endogena - instrumentos%*%delta
   v  <- c(v1,v2)
   tau<- chol2inv(chol(diag(rowSums(W)) - (exp(gama)/(1+exp(gama)))*W))
   
   omega_inv     <- chol2inv(chol(omega))
-  #omega_inv <- diag(1,t)
   tau_inv       <- (diag(rowSums(W)) - (exp(gama)/(1+exp(gama)))*W)
   sigma_inv     <- chol2inv(chol(sigma))
   
-  #priori  <- -0.5*((exp(gama)/(1+exp(gama)))-a)^2/b
   priori  <- -0.5*(gama-a)^2/b
   verossi <- -(0.5*t*p)*log(det(tau)) - 0.5*(v%*%kronecker(sigma_inv,kronecker(tau_inv,omega_inv))%*%v) + log(exp(gama)/(1+exp(gama))^2)
   funcao  <- priori + verossi
