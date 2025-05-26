@@ -83,7 +83,7 @@ condicionalPSI<-function(a,b,psi,endogena,instrumentos,delta,y,covariaveis,beta,
   funcao  <- priori + verossi
   return(funcao)
 }
-# Metropolis-Hasting for phi
+# Metropolis-Hastings for phi
 atualizarPHI<-function(a,b,phi,endogena,instrumentos,delta,y,covariaveis,beta,sigma,tau,rho,W,sigma2,n,t,p){
   valoratual    <- log((1+phi)/(1-phi))
   valorproposto <- rnorm(1,valoratual,sqrt(0.05))
@@ -111,7 +111,7 @@ condicionalGAMMA<-function(a,b,gama,W,endogena,instrumentos,delta,y,covariaveis,
   funcao  <- priori + verossi
   return(funcao)
 }
-# Metropolis-Hasting for rho
+# Metropolis-Hastings for rho
 atualizarRHO<-function(a,b,rho,W,endogena,instrumentos,delta,y,covariaveis,beta,sigma,t,p){
   valoratual    <- log(rho/(1-rho))
   valorproposto <- rnorm(1,valoratual,sqrt(0.01))
