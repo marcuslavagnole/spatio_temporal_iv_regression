@@ -13,14 +13,14 @@ source("Full_Conditionals_IVST.R")
 source("Missing_Imputation.R")
 source("aux_func.R")
 
-# Load data ans set its configuration
+# Load data and set its configuration
 load("data.RData")
 load("W_MS.RData")
 
 dados = dados[which(dados$uf=="50"),]
-aux1  = dados[which(dados$nomemun=="SELVÕRIA"),]
+aux1  = dados[which(dados$nomemun=="SELV√çRIA"),]
 aux2  = dados[which(dados$nomemun=="SETE QUEDAS"),]
-dados[c(which(dados$nomemun=="SETE QUEDAS"),which(dados$nomemun=="SELVÕRIA")),] = rbind(aux1,aux2)
+dados[c(which(dados$nomemun=="SETE QUEDAS"),which(dados$nomemun=="SELV√çRIA")),] = rbind(aux1,aux2)
 colSums(is.na(dados))
 
 # Define panel dimensions
@@ -39,7 +39,7 @@ y_ind     <- which(is.na(y))
 x_end_ind <- which(is.na(x_end))
 indices   <- c(y_ind,(n*t+x_end_ind))
 
-# Define number of iterations to run
+# Define the number of iterations to run
 NN <- 21000
 
 # Create auxiliary objects 
