@@ -5,9 +5,6 @@ The paper proposes an extension of the Bayesian instrumental variables regressio
 
 The repo includes:
 
-- **MCMC_Code_IVST.R** : Main file containing the MCMC routine; 
-- **Full_Conditionals_IVST.R** : Auxiliary file with all full conditional distributions;
-- **Missing_Imputation.R** : File with the multiple imputation function;
-- **aux_func.R** : File with the auxiliary functions;
+- **MCMC_IVST.R** : Main file containing the MCMC routine; 
 - **data.RData** : real data set;
 - **W_MS.RData** : adjacency matrix for the municipalities of Mato Grosso do Sul state.
