@@ -42,7 +42,7 @@ spatio_temporal_IV <- function(y,x,x_end,z,W,n,t,n_mcmc,burnin_mcmc,thin_mcmc){
   rho[1,1]  <- runif(1)
   omega <- formataOMEGA(phi[1,1],1,t)
   tau   <- solve(diag(rowSums(W)) - rho[1,1]*W)
-  #y[y_ind] <- rnorm(length(y_ind),mean(y[-y_ind]),0.1)
+  y[y_ind] <- rnorm(length(y_ind),mean(y[-y_ind]),0.1)
   x_end[x_end_ind] <- rnorm(length(x_end_ind),mean(x_end[-x_end_ind]),0.1)
   #MCMC
   for (k in 2:n_mcmc){
@@ -55,7 +55,7 @@ spatio_temporal_IV <- function(y,x,x_end,z,W,n,t,n_mcmc,burnin_mcmc,thin_mcmc){
     beta[k,]   <- atualizarBETA(rep(0,(dim(x)[2]+1)),diag(100,(dim(x)[2]+1)),sigma[,,k],x_end,z,delta[k,],y,x,omega,n,tau,rho[k,1],W)
     # Imputing value
     impute[k,]  <- imputeMISSING(indices,y,x,beta[k,],x_end,z,delta[k,],sigma[,,k],tau,omega,n,t)
-    #y[y_ind]         <- imput[k,1:length(y_ind)]
+    y[y_ind]         <- impute[k,1:length(y_ind)]
     x_end[x_end_ind] <- impute[k,(length(y_ind)+1):(length(x_end_ind)+length(y_ind))]
   }
   resultado[['beta_star']]<- beta[seq(burnin_mcmc+1,n_mcmc,thin_mcmc),1:dim(x)[2]]
@@ -235,4 +235,5 @@ formataOMEGA<-function(phi,sigma2,t){
   m.ar1[lower.tri(m.ar1)] <- t(m.ar1)[lower.tri(m.ar1)]
   omega <- (sigma2/(1-phi^2))*m.ar1
   return(omega)
+
 }
