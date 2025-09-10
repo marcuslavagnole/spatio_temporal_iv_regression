@@ -4,6 +4,7 @@
 #' Instrumental Variables Regression with Missing Data.
 #'
 #' @param y (nxt)-dimensional vector of responses.
+#' y = (y_{11},y_{12},...,y_{1t},y_{21},y_{22},...,y_{2t},...,y_{n1},y_{n2},...,y_{nt})
 #' @param x Matrix - (nxt)x(q+1) - of exogenous variables (include the intercept).
 #' @param x_end (nxt)-dimensional vector of endogenous variables.
 #' @param z Matrix - (nxt)x(l+1) - of instruments (include the intercept).
@@ -237,3 +238,4 @@ formataOMEGA<-function(phi,sigma2,t){
   return(omega)
 
 }
+
